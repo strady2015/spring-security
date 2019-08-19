@@ -1,0 +1,58 @@
+<link rel='stylesheet prefetch'
+      href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css'>
+<div class="row center-align">
+    <h2>Welcome!</h2>
+    <h4>Login to Enter.</h4>
+</div>
+<div class="row">
+    <div class="col s12 m4 offset-m4 l4 offset-l4">
+        <div class="card-panel">
+            <div class="row">
+                <div class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="mdi-action-account-circle prefix"></i>
+                            <input id="username" type="text" placeholder="Username"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="mdi-communication-vpn-key prefix"></i>
+                            <input id="password" type="password" placeholder="Password"/>
+                        </div>
+                    </div>
+                    <div class="row center-align">
+                        <button class="btn waves-effect waves-light">登录
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+<script type="text/javascript">
+    $(".btn").click(function () {
+        var username = $("#username").val();
+        var password = $("#password").val();
+        $.ajax({
+            url: '/login',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                "userName": username,
+                "password": password
+            },
+            success: function (data) {
+                console.log(data);
+                Materialize.toast(data.msg, 1500);
+                if (data.ret == 1) {
+                    localStorage.setItem("token",data.X_Auth_Token);
+                    window.location.href = "/index";
+                }
+            }
+        })
+    })
+</script>
