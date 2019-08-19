@@ -15,23 +15,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.validation.Valid;
 
 /**
- * @version V1.0.0
- * @Description 登陆接口
- * @Author liuyuequn weanyq@gmail.com
- * @Date 2017/10/3 1:30
+ * @Author: strady
+ * @Date: 2019-08-19
+ * @Time: 14:10:22
+ * @Description:
  */
 @Controller
 public class LoginController {
 
-    private final LoginService loginService;
+    @Autowired
+    private LoginService loginService;
 
     @Value("${token.header}")
     private String tokenHeader;
-
-    @Autowired
-    public LoginController(LoginService loginService) {
-        this.loginService = loginService;
-    }
 
     @GetMapping(value = "/")
     public String loginPage() {

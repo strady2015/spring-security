@@ -11,13 +11,13 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
- * @version V1.0.0
- * @Description Spring Security 的配置类
- * @Author liuyuequn weanyq@gmail.com
- * @Date 2017/10/3 0:02
+ * @Author: strady
+ * @Date: 2019-08-19
+ * @Time: 13:50:50
+ * @Description: Spring Security配置
  */
-@Configuration      // 声明为配置类
-@EnableWebSecurity      // 启用 Spring Security web 安全的功能
+@Configuration
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
